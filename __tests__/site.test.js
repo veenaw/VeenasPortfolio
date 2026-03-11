@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const {
-  initSiteInteractions
+  initSiteInteractions,
+  setupFadeInAnimations
 } = require('../site');
 
 function loadHtmlIntoDocument() {
@@ -53,6 +54,27 @@ describe('Veena Portfolio Site interactions', () => {
     );
   });
 
+  test('smooth scrolling safely ignores links without valid in-page targets', () => {
+    const externalLink = document.createElement('a');
+    externalLink.href = '/external';
+    document.body.appendChild(externalLink);
+
+    const missingTargetLink = document.createElement('a');
+    missingTargetLink.href = '#does-not-exist';
+    document.body.appendChild(missingTargetLink);
+
+    initSiteInteractions(window, document);
+
+    const externalClick = new MouseEvent('click', { bubbles: true, cancelable: true });
+    const missingClick = new MouseEvent('click', { bubbles: true, cancelable: true });
+
+    externalLink.dispatchEvent(externalClick);
+    missingTargetLink.dispatchEvent(missingClick);
+
+    expect(externalClick.defaultPrevented).toBe(false);
+    expect(missingClick.defaultPrevented).toBe(false);
+  });
+
   test('fade-in sections become visible when IntersectionObserver is not available', () => {
     // Simulate an environment without IntersectionObserver
     const originalIO = window.IntersectionObserver;
@@ -70,6 +92,52 @@ describe('Veena Portfolio Site interactions', () => {
     // Restore original IntersectionObserver (if any) for other tests
     if (originalIO) {
       window.IntersectionObserver = originalIO;
+    } else {
+      delete window.IntersectionObserver;
+    }
+  });
+
+  test('fade-in sections are observed when IntersectionObserver is available', () => {
+    loadHtmlIntoDocument();
+
+    const fadeElements = Array.from(document.querySelectorAll('.fade-in'));
+    expect(fadeElements.length).toBeGreaterThan(0);
+
+    let observedElements = [];
+    let capturedCallback = null;
+
+    const OriginalIO = window.IntersectionObserver;
+
+    class FakeIntersectionObserver {
+      constructor(callback, options) {
+        capturedCallback = callback;
+        this.options = options;
+      }
+
+      observe(el) {
+        observedElements.push(el);
+      }
+    }
+
+    window.IntersectionObserver = FakeIntersectionObserver;
+
+    setupFadeInAnimations(window, document);
+
+    expect(observedElements.length).toBe(fadeElements.length);
+    expect(typeof capturedCallback).toBe('function');
+
+    const entries = observedElements.map(el => ({
+      isIntersecting: true,
+      target: el
+    }));
+    capturedCallback(entries);
+
+    observedElements.forEach(el => {
+      expect(el.classList.contains('visible')).toBe(true);
+    });
+
+    if (OriginalIO) {
+      window.IntersectionObserver = OriginalIO;
     } else {
       delete window.IntersectionObserver;
     }
@@ -118,6 +186,33 @@ describe('Veena Portfolio Site interactions', () => {
 
     const buttons = futureSection.querySelectorAll('.contact-btn');
     expect(buttons.length).toBeGreaterThanOrEqual(3);
+  });
+
+  test('initSiteInteractions no-ops when window or document are missing', () => {
+    expect(() => initSiteInteractions(null, document)).not.toThrow();
+    expect(() => initSiteInteractions(window, null)).not.toThrow();
+  });
+});
+
+describe('site bootstrap auto-initialization', () => {
+  test('attaches a DOMContentLoaded listener when document is still loading', () => {
+    jest.resetModules();
+
+    const originalWindow = global.window;
+    const originalDocument = global.document;
+
+    global.window = {};
+    global.document = {
+      readyState: 'loading',
+      addEventListener: jest.fn()
+    };
+
+    jest.isolateModules(() => {
+      require('../site');
+    });
+
+    global.window = originalWindow;
+    global.document = originalDocument;
   });
 });
 
