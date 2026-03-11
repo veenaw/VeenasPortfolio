@@ -104,7 +104,7 @@ describe('Veena Portfolio Site interactions', () => {
     expect(button.style.transform).toBe('');
   });
 
-  test("contact section is the unified \"Let's build the future\" block", () => {
+  test('contact section is the unified "Let\\'s build the future" block', () => {
     const contactSection = document.querySelector('#contact');
     expect(contactSection).not.toBeNull();
 
@@ -113,7 +113,7 @@ describe('Veena Portfolio Site interactions', () => {
 
     const heading = futureSection.querySelector('.future-heading');
     expect(heading).not.toBeNull();
-    expect(heading.textContent).toMatch(/Let's build/i);
+    expect(heading.textContent).toMatch(/Let\\'s build/i);
     expect(heading.textContent).toMatch(/the future/i);
 
     const buttons = futureSection.querySelectorAll('.contact-btn');
