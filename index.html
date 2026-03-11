@@ -271,6 +271,49 @@
             color: #764ba2;
         }
 
+        .future-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+        }
+
+        .future-heading {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .future-heading span {
+            display: block;
+            font-weight: 700;
+        }
+
+        .future-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+
+        .future-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .future-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .contact-content {
             text-align: center;
             max-width: 600px;
@@ -347,7 +390,8 @@
             }
 
             .cta-buttons,
-            .contact-buttons {
+            .contact-buttons,
+            .future-meta {
                 flex-direction: column;
                 align-items: center;
             }
@@ -532,67 +576,44 @@
                 </div>
             </section>
 
-            <section id="recruiters" class="section fade-in">
-                <h2 class="section-title">Hiring For A Role?</h2>
-                <div class="contact-content">
-                    <p class="contact-text">
-                        If you're a hiring manager or recruiter looking for a Senior/Lead Backend or Platform Engineer,
-                        I’d love to hear about the role, see the JD or application link, and explore how I can help your team succeed.
-                    </p>
-                    <div class="contact-buttons">
-                        <a
-                            href="mailto:vwagle2@gmail.com?subject=Opportunity%20for%20Senior%20Software%20Engineer%20Role&body=Hi%20Veena%2C%0D%0A%0D%0AWe%20came%20across%20your%20profile%20and%20would%20love%20to%20discuss%20a%20role%20we%27re%20hiring%20for.%20Here%20are%20the%20details%3A%0D%0A%0D%0A-%20Company%20Name%3A%0D%0A-%20Role%20Title%3A%0D%0A-%20Location/Remote%3A%0D%0A-%20Tech%20Stack%3A%0D%0A-%20Compensation%20Range%3A%0D%0A-%20Job%20Description%20/Application%20Link%3A%0D%0A%0D%0AThank%20you!%0D%0A"
-                            class="contact-btn"
-                        >
-                            <i class="fas fa-briefcase"></i>
-                            Email Me About A Role
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="freelance" class="section fade-in">
-                <h2 class="section-title">Need a Freelance Backend Engineer?</h2>
-                <div class="contact-content">
-                    <p class="contact-text">
-                        If you're a founder, product owner, or engineering leader looking for a freelance backend developer,
-                        I can help you design, build, and scale your next platform or internal tool.
-                    </p>
-                    <div class="contact-buttons">
-                        <a
-                            href="mailto:vwagle2@gmail.com?subject=Freelance%20Backend%20Project%20Inquiry&body=Hi%20Veena%2C%0D%0A%0D%0AI%27m%20interested%20in%20working%20with%20you%20as%20a%20freelance%20backend%20engineer.%20Here%20are%20the%20project%20details%3A%0D%0A%0D%0A-%20Brief%20description%20of%20what%20we%20want%20to%20build%3A%0D%0A-%20Target%20users%20and%20use%20cases%3A%0D%0A-%20Current%20tech%20stack%20(if%20any)%3A%0D%0A-%20Preferred%20technologies%20(Golang%2C%20Python%2C%20cloud%2C%20etc.)%3A%0D%0A-%20Rough%20timeline%20(start%2Fend)%3A%0D%0A-%20Budget%20range%3A%0D%0A-%20Any%20links%20/%20docs%20with%20more%20details%3A%0D%0A%0D%0ALooking%20forward%20to%20your%20reply.%0D%0A"
-                            class="contact-btn"
-                        >
-                            <i class="fas fa-laptop-code"></i>
-                            Email Me Your Project Idea
-                        </a>
-                    </div>
-                </div>
-            </section>
-
             <section id="contact" class="section fade-in">
-                <h2 class="section-title">Let's Connect</h2>
-                <div class="contact-content">
-                    <p class="contact-text">
-                        I'm always interested in new opportunities and challenging projects in backend engineering, 
-                        cloud-native solutions, and system architecture. Let's discuss how my expertise can contribute to your team!
+                <div class="future-section">
+                    <h2 class="future-heading">
+                        Let's build<br>
+                        <span>the future.</span>
+                    </h2>
+                    <p class="future-text">
+                        Have an idea for a platform, backend system, or data-intensive product? 
+                        I’d love to help you design, build, and scale it with reliable, production-ready engineering.
                     </p>
-                    
+                    <div class="future-meta">
+                        <div class="future-meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Mumbai, India
+                        </div>
+                        <div class="future-meta-item">
+                            <i class="fas fa-briefcase"></i>
+                            Open to Senior/Lead roles & projects
+                        </div>
+                    </div>
                     <div class="contact-buttons">
                         <a href="mailto:vwagle2@gmail.com" class="contact-btn">
                             <i class="fas fa-envelope"></i>
                             Email Me
                         </a>
-                        <a href="https://in.linkedin.com/in/veenaw" target="_blank" class="contact-btn">
-                            <i class="fab fa-linkedin"></i>
-                            LinkedIn
-                        </a>
                         <a href="tel:+919819934231" class="contact-btn">
                             <i class="fas fa-phone"></i>
                             Call Me
                         </a>
+                        <a href="https://github.com/veenawagle" target="_blank" class="contact-btn">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                        <a href="https://in.linkedin.com/in/veenaw" target="_blank" class="contact-btn">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
                     </div>
-
                 </div>
             </section>
         </div>
