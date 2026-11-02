@@ -1,0 +1,16 @@
+.chat-section { color: #e5e7eb; }
+.chat-intro, #chat-status { color: #cbd5e1; margin-bottom: 16px; }
+.chat-prompts { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+.chat-prompts button { background: #1e293b; color: #e0e7ff; border: 1px solid #818cf8; border-radius: 20px; padding: 10px 16px; cursor: pointer; font: inherit; }
+#chat-log { max-height: 480px; overflow-y: auto; }
+.chat-message { background: #111c31; border: 1px solid #475569; border-radius: 12px; padding: 18px; margin-bottom: 14px; overflow-wrap: anywhere; }
+.chat-message p { white-space: pre-wrap; margin-top: 8px; }
+.chat-message details { margin-top: 12px; font-size: .9rem; color: #cbd5e1; }
+.chat-message summary { cursor: pointer; color: #c7d2fe; }
+#chat-form label { display: block; margin-bottom: 8px; }
+#chat-question { width: 100%; min-height: 100px; padding: 14px; background: #0b1020; color: #f8fafc; border: 1px solid #94a3b8; border-radius: 10px; font: inherit; resize: vertical; }
+#chat-form button { margin: 12px 0; }
+.chat-section button:disabled { opacity: .6; cursor: wait; }
+.chat-section :focus-visible { outline: 3px solid #fbbf24; outline-offset: 3px; }
+.section { scroll-margin-top: 85px; }
+@media (max-width: 480px) { .skills-grid, .projects-grid { grid-template-columns: minmax(0, 1fr); } }
