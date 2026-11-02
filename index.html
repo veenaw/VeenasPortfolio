@@ -565,6 +565,7 @@
             transform: translateY(0);
         }
     </style>
+    <link rel="stylesheet" href="chat.css">
 </head>
 <body>
     <nav class="site-nav">
@@ -578,7 +579,7 @@
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <a href="#resume" class="nav-link">Resume</a>
+                <a href="#ask" class="nav-link">Ask AI</a>
             </div>
         </div>
     </nav>
@@ -599,9 +600,9 @@
                             <i class="fas fa-envelope"></i>
                             Get In Touch
                         </a>
-                        <a href="#projects" class="btn btn-secondary">
+                        <a href="#ask" class="btn btn-secondary">
                             <i class="fas fa-code"></i>
-                            View My Work
+                            Ask About My Experience
                         </a>
                     </div>
                 </div>
@@ -612,7 +613,7 @@
             <div class="hero-meta">
                 <div class="hero-meta-item">
                     <div class="hero-meta-label">Experience</div>
-                    <div class="hero-meta-value">10+ years across healthcare, fintech & telecom</div>
+                    <div class="hero-meta-value">12 years across healthcare, financial data, networking & AI</div>
                 </div>
                 <div class="hero-meta-item">
                     <div class="hero-meta-label">Strengths</div>
@@ -626,11 +627,28 @@
         </header>
 
         <div class="main-content">
+            <section id="ask" class="section chat-section">
+                <h2 class="section-title">Ask about Veena</h2>
+                <p class="chat-intro">Explore my backend and AI experience with my AI portfolio assistant. Answers use curated résumé facts; expand the sources to check the evidence.</p>
+                <div class="chat-prompts">
+                    <button type="button" data-question="What is Veena’s strongest Go and distributed systems experience?">Go &amp; distributed systems</button>
+                    <button type="button" data-question="What has Veena built with AI?">AI experience</button>
+                    <button type="button" data-question="Give examples of Veena improving performance and reliability.">Performance &amp; reliability</button>
+                </div>
+                <div id="chat-log" role="log" aria-label="Portfolio conversation" aria-live="polite"></div>
+                <form id="chat-form">
+                    <label for="chat-question">Your question or a job description</label>
+                    <textarea id="chat-question" maxlength="6000" required placeholder="What experience does Veena have with reliable backend systems?"></textarea>
+                    <button class="btn btn-primary" type="submit">Ask assistant</button>
+                </form>
+                <p id="chat-status" role="status">AI can make mistakes. Questions are sent to OpenAI to generate answers. Avoid sharing private information. Each question is answered independently.</p>
+            </section>
+
             <section id="about" class="section fade-in">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
                     <p>
-                        I'm a dynamic and results-driven Senior Software Engineer with over 10 years of comprehensive experience in
+                        I'm a dynamic and results-driven Senior Software Engineer with 12 years of comprehensive experience in
                         Golang development, microservices architecture, and cloud-native engineering. I specialize in creating robust, 
                         scalable backend solutions and have a proven track record of optimizing system performance and enhancing reliability.
                     </p>
@@ -711,7 +729,7 @@
                                 <span class="tech-tag">PostgreSQL</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link">
+                                <a href="#ask" class="project-link">
                                     <i class="fas fa-info-circle"></i>
                                     Details
                                 </a>
@@ -727,7 +745,7 @@
                             <h3 class="project-title">Financial Data API & Analytics Platform</h3>
                             <p class="project-description">
                                 Built high-performance Data API and Custom Reports system for institutional clients, 
-                                achieving 90% page load reduction through strategic Redis caching and system optimization.
+                                processing 10M+ records/day, with asynchronous Pub/Sub and Redis pipelines improving throughput by 90%.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">C#</span>
@@ -737,7 +755,7 @@
                                 <span class="tech-tag">Google Pub/Sub</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link">
+                                <a href="#ask" class="project-link">
                                     <i class="fas fa-info-circle"></i>
                                     Details
                                 </a>
@@ -753,7 +771,7 @@
                             <h3 class="project-title">Carrier Ethernet Network Protocols</h3>
                             <p class="project-description">
                                 Designed and implemented advanced networking protocols and FPGA-based functionalities, 
-                                reducing traffic downtime by 50% and enhancing system-level performance for telecom providers.
+                                including pseudowire status messaging, delay measurement, and synthetic loss measurement for telecom systems.
                             </p>
                             <div class="project-tech">
                                 <span class="tech-tag">C/C++</span>
@@ -762,7 +780,7 @@
                                 <span class="tech-tag">Embedded Systems</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="project-link">
+                                <a href="#ask" class="project-link">
                                     <i class="fas fa-info-circle"></i>
                                     Details
                                 </a>
@@ -801,7 +819,7 @@
                             <i class="fas fa-phone"></i>
                             Call Me
                         </a>
-                        <a href="https://github.com/veenawagle" target="_blank" class="contact-btn">
+                        <a href="https://github.com/veenaw" target="_blank" class="contact-btn">
                             <i class="fab fa-github"></i>
                             GitHub
                         </a>
@@ -820,5 +838,7 @@
     </footer>
 
     <script src="site.js"></script>
+    <script src="chat-config.js"></script>
+    <script src="chat.js"></script>
 </body>
 </html>

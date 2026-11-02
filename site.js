@@ -4,7 +4,7 @@ function setupSmoothScrolling(win, doc) {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       // Only handle in-page anchor links with an actual target
-      if (!href || !href.startsWith('#')) {
+      if (!href || href === '#' || !href.startsWith('#')) {
         return;
       }
 
@@ -100,11 +100,12 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 }
 
 // Export functions for testing
-module.exports = {
+if (typeof module !== 'undefined') module.exports = {
   initSiteInteractions,
   setupSmoothScrolling,
   setupFadeInAnimations,
   setupProjectCardHoverEffects,
   setupClickAnimations
 };
+
 
